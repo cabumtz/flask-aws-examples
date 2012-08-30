@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block body %}
+
+<div class="span3 well">
+  <ul>
+    <li><a href="/s3/">Listar buckets</a></li>
+  </ul>
+</div>
+<div class="span8 content">
+  <form action="/s3/create/bucket/" method=post enctype=multipart/form-data>
+    <p><input type="input" name="name" />
+    <input type="submit" value="Crear" /></p>
+  </form>
+  <ul>
+    {% for name in names %}
+    <li>
+    <a href="/s3/view/bucket/{{name}}/">{{name}}</a> 
+    (<a href="/s3/delete/bucket/{{name}}/">Borrar</a>)
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
